@@ -1,0 +1,5 @@
+@EndUserText.label: 'Request'
+define service ZUI_ML2023_REQUEST {
+  expose ZC_ML2023_REQUEST  as Request;
+  expose ZC_ML2023_EMPLOYEE as Employee;
+}

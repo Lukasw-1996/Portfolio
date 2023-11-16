@@ -1,0 +1,41 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeName: 'Request',
+  typeNamePlural: 'Requests',
+  title.value: 'RequestUUID',
+  description.value: 'StartDate'
+}
+annotate view ZC_ML2023_REQUEST with
+{
+@UI.facet:
+  [
+    { position: 10, targetQualifier: 'RequestDetails', label: 'Request Details', type: #FIELDGROUP_REFERENCE },
+   
+    { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
+  
+  ]
+ @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+ RequestUuid;
+ @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
+ @UI.lineItem: [{ position: 10 }]
+ Applicant;
+ @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
+ @UI.lineItem: [{ position: 20 }]
+ Approver;
+ @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
+ @UI.lineItem: [{ position: 30 }]
+ Startdate;
+ @UI.fieldGroup: [{ position: 40, qualifier: 'RequestDetails' }]
+ @UI.lineItem: [{ position: 40 }]
+ Enddate;
+ @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
+ @UI.lineItem: [{ position: 50 }]
+ Comment1;
+ @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
+ @UI.lineItem: [{ position: 60 }]
+ Status;
+ /* Associations */
+// _Employee;
+
+}

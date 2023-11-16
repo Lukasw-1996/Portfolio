@@ -1,0 +1,39 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+typeNamePlural: 'Employees',
+title.value: 'Employeenumber',
+description.value: 'Surename'
+
+}
+
+annotate entity ZC_ML2023_EMPLOYEE with
+{
+  /* Facets */
+
+  @UI.facet:
+  [
+      { position: 10, type: #FIELDGROUP_REFERENCE, label: 'Employee Data', targetQualifier: 'EmployeeData'},
+      { position: 20, type: #FIELDGROUP_REFERENCE, label: 'Administrative Data', targetQualifier: 'AdminData'}
+    ]
+  //@UI.lineItem: [{ position: 10 }]
+ // @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  EmployeeUuid;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'EmployeeData' }]
+  Employeenumber;
+  @UI.lineItem: [{ position: 30 }]
+  //@UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 30, qualifier: 'EmployeeData' }]
+  Forename;
+  @UI.lineItem: [{ position: 40 }]
+  //@UI.selectionField: [{ position: 30 }]
+  @UI.fieldGroup: [{ position: 40, qualifier: 'EmployeeData' }]
+  Surename;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'EmployeeData' }]
+  Entrydate;
+}

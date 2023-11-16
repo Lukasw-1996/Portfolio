@@ -1,0 +1,34 @@
+managed implementation in class zbp_ml2023_employee unique;
+strict ( 2 );
+
+define behavior for ZR_ML2023_EMPLOYEE alias Employee
+persistent table zml2023_employee
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Request { create; }
+
+  field (readonly,numbering : managed) EmployeeUUID;
+  mapping for ZML2023_EMPLOYEE corresponding{
+  EmployeeUuid = Employee_UUID;
+  }
+}
+
+define behavior for ZR_ML2023_REQUEST alias Request
+persistent table zml2023_request
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) RequestUuid;
+  association _Employee;
+   mapping for ZML2023_REQUEST corresponding{
+  RequestUuid = Request_UUID;
+  }
+}

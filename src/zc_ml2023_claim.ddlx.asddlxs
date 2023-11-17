@@ -1,0 +1,32 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo:
+{
+  typeName: 'Claim',
+  typeNamePlural: 'Claims',
+  title.value: 'ClaimUUID',
+  description.value: 'Vacations'
+}
+annotate entity ZC_ML2023_CLAIM with
+{
+  @UI.facet:
+    [
+      { position: 10, targetQualifier: 'ClaimDetails', label: 'Claim Details', type: #FIELDGROUP_REFERENCE },
+
+      { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
+
+    ]
+  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
+  ClaimUuid;
+  @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 10 }]
+  Employee;
+  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 20 }]
+  Year1;
+  @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
+  @UI.lineItem: [{ position: 30 }]
+  Vacations;
+  /* Associations */
+  //_Employee;
+
+}

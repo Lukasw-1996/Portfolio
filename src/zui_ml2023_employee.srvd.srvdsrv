@@ -2,4 +2,5 @@
 define service ZUI_ML2023_EMPLOYEE {
   expose ZC_ML2023_EMPLOYEE as Employee;
   expose ZC_ML2023_REQUEST  as Request;
+  expose ZC_ML2023_CLAIM    as Claim;
 }

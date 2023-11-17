@@ -3,7 +3,7 @@
 define root view entity ZR_ML2023_EMPLOYEE
   as select from zml2023_employee
   composition [0..*]  of ZR_ML2023_REQUEST as _Request
-{
+  {
     @EndUserText: { label: 'Employee UUID', quickInfo: 'Employee UUID' }
   key employee_uuid  as EmployeeUuid,
       employeenumber as Employeenumber,
@@ -14,4 +14,5 @@ define root view entity ZR_ML2023_EMPLOYEE
       
      /*Associations*/
      _Request
+     
 }

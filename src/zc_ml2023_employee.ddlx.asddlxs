@@ -14,6 +14,7 @@ annotate entity ZC_ML2023_EMPLOYEE with
   @UI.facet:
   [
       { position: 10, type: #FIELDGROUP_REFERENCE, label: 'Employee Data', targetQualifier: 'EmployeeData'},
+      { position: 15, type: #LINEITEM_REFERENCE, targetElement: '_Request', label:  'Request Details' },
       { position: 20, type: #FIELDGROUP_REFERENCE, label: 'Administrative Data', targetQualifier: 'AdminData'}
     ]
   //@UI.lineItem: [{ position: 10 }]

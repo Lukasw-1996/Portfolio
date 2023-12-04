@@ -11,11 +11,26 @@ authorization master ( instance )
   update;
   delete;
   association _Request { create; }
+  association _Claim { create; }
 
-  field (readonly,numbering : managed) EmployeeUUID;
-  mapping for ZML2023_EMPLOYEE corresponding{
-  EmployeeUuid = Employee_UUID;
-  }
+
+
+  field ( readonly, numbering : managed ) EmployeeUUID;
+  field ( readonly ) CreatedAt;
+  field ( readonly ) CreatedBy;
+  field ( readonly ) LastChangedBy;
+  field ( readonly ) LastChangedAt;
+  field ( mandatory : create ) Entrydate;
+  field ( readonly : update ) Entrydate;
+
+  mapping for zml2023_employee corresponding
+    {
+      EmployeeUuid  = Employee_UUID;
+      CreatedAt     = created_at;
+      CreatedBy     = created_by;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
+    }
 }
 
 define behavior for ZR_ML2023_REQUEST alias Request
@@ -26,9 +41,43 @@ authorization dependent by _Employee
 {
   update;
   delete;
-  field ( readonly ) RequestUuid;
+
+  action CancelRequest result [1] $self;
+
+  field ( readonly, numbering : managed ) RequestUuid;
+  field ( readonly ) Applicant;
   association _Employee;
-   mapping for ZML2023_REQUEST corresponding{
-  RequestUuid = Request_UUID;
-  }
+
+
+
+  mapping for zml2023_request corresponding
+    {
+      RequestUuid   = Request_UUID;
+      CreatedAt     = created_at;
+      CreatedBy     = created_by;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
+    }
+}
+
+define behavior for ZR_ML2023_CLAIM alias Claim
+persistent table zml2023_claim
+lock dependent by _Employee
+authorization dependent by _Employee
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly, numbering : managed ) ClaimUuid;
+  field ( readonly ) EmployeeUuid;
+  association _Employee;
+  mapping for zml2023_claim corresponding
+    {
+      ClaimUuid     = claim_uuid;
+      EmployeeUuid  = employee_uuid;
+      CreatedAt     = created_at;
+      CreatedBy     = created_by;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
+    }
 }

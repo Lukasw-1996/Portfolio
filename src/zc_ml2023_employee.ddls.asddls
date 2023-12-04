@@ -3,6 +3,7 @@
 @Search.searchable: true
 @Metadata.allowExtensions: true
 define root view entity ZC_ML2023_EMPLOYEE
+provider contract transactional_query
   as projection on ZR_ML2023_EMPLOYEE
 {
   key EmployeeUuid,
@@ -15,7 +16,14 @@ define root view entity ZC_ML2023_EMPLOYEE
       @Search.fuzzinessThreshold: 0.7
       Surename,
       Entrydate,
+      CreatedBy,
+      CreatedAt,
+      LastChangedBy,
+      LastChangedAt,
       
       /* Associations */
-      _Request : redirected to composition child ZC_ML2023_REQUEST
+      _Request : redirected to composition child ZC_ML2023_REQUEST,
+      _Claim : redirected to composition child ZC_ML2023_CLAIM
+      
+      
 }

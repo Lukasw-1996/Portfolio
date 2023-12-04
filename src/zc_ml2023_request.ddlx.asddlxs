@@ -4,7 +4,7 @@
   typeName: 'Request',
   typeNamePlural: 'Requests',
   title.value: 'RequestUUID',
-  description.value: 'StartDate'
+  description.value: '_Employee.Surename'
 }
 annotate view ZC_ML2023_REQUEST with
 {
@@ -15,6 +15,13 @@ annotate view ZC_ML2023_REQUEST with
     { position: 20, targetQualifier: 'AdminData', label: 'Administrative Data', type: #FIELDGROUP_REFERENCE }
   
   ]
+  
+/* Actions*/
+@UI.lineItem: [{ position: 10, type:#FOR_ACTION,dataAction:'CancelRequest',label:'Cancel Request' }]
+
+  
+  
+  
  @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
  RequestUuid;
  @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
@@ -33,9 +40,24 @@ annotate view ZC_ML2023_REQUEST with
  @UI.lineItem: [{ position: 50 }]
  Comment1;
  @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
- @UI.lineItem: [{ position: 60 }]
+ @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITH_ICON}]
  Status;
+ @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
+    CreatedBy;
+    
+    @UI.fieldGroup: [{ position: 30, qualifier: 'AdminData' }]
+    CreatedAt;
+    
+    @UI.fieldGroup: [{ position: 40, qualifier: 'AdminData' }]
+    LastChangedBy;
+    
+    @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
+    LastChangedAt;
  /* Associations */
 // _Employee;
+
+/* Transient Data */
+
+
 
 }

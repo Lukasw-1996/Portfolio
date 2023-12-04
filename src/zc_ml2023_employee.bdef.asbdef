@@ -8,9 +8,19 @@ define behavior for ZC_ML2023_EMPLOYEE //alias <alias_name>
   use delete;
 
   use association _Request { create; }
+  use association _Claim { create; }
 }
 
 define behavior for ZC_ML2023_REQUEST //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use action CancelRequest;
+
+  use association _Employee;
+}
+define behavior for ZC_ML2023_CLAIM //alias <alias_name>
 {
   use update;
   use delete;

@@ -46,6 +46,17 @@ authorization dependent by _Employee
 
   field ( readonly, numbering : managed ) RequestUuid;
   field ( readonly ) Applicant;
+  field ( mandatory : create ) Approver;
+  field ( readonly : update ) Approver;
+  field ( mandatory : create ) StartDate;
+  field ( readonly : update ) StartDate;
+  field ( mandatory : create ) EndDate;
+  field ( readonly : update ) EndDate;
+  field ( readonly ) Status;
+  field ( readonly ) CreatedAt;
+  field ( readonly ) CreatedBy;
+  field ( readonly ) LastChangedBy;
+  field ( readonly ) LastChangedAt;
   association _Employee;
 
 
@@ -70,6 +81,10 @@ authorization dependent by _Employee
   delete;
   field ( readonly, numbering : managed ) ClaimUuid;
   field ( readonly ) EmployeeUuid;
+  field ( readonly ) CreatedAt;
+  field ( readonly ) CreatedBy;
+  field ( readonly ) LastChangedBy;
+  field ( readonly ) LastChangedAt;
   association _Employee;
   mapping for zml2023_claim corresponding
     {

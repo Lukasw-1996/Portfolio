@@ -7,8 +7,11 @@ define root view entity ZR_ML2023_EMPLOYEE
 {
       @EndUserText: { label: 'Employee UUID', quickInfo: 'Employee UUID' }
   key employee_uuid   as EmployeeUuid,
+  @EndUserText:{ label: 'EmployeeNumber', quickInfo: 'EmployeeNumber' }
       employeenumber  as Employeenumber,
+      @EndUserText:{ label: 'Forename', quickInfo: 'Forename' }
       forename        as Forename,
+      @EndUserText:{ label: 'Surename', quickInfo: 'Surname' }
       surename        as Surename,
       entrydate       as Entrydate,
       @Semantics.user.createdBy: true
@@ -20,7 +23,7 @@ define root view entity ZR_ML2023_EMPLOYEE
       @Semantics.systemDateTime.lastChangedAt: true
       last_changed_at as LastChangedAt,
 
-
+      
       /*Associations*/
       _Request,
       _Claim

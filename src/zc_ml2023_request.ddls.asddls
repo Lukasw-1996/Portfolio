@@ -5,6 +5,7 @@ define view entity ZC_ML2023_REQUEST
   as projection on ZR_ML2023_REQUEST
 {
  key RequestUuid,
+ @ObjectModel.text.element: [ 'ApplicantName' ]
  Applicant,
  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ML2023_ApproverVH', element: 'EmployeeUuid' } }]
  Approver,
@@ -20,6 +21,9 @@ LastChangedAt,
 StatusCriticality,
 StatusName,
 
+/* Transient Data*/
+    ApproverName,
+    ApplicantName,
  
  /* Associations */
  _Employee : redirected to parent ZC_ML2023_EMPLOYEE 

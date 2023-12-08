@@ -12,5 +12,5 @@ define view entity ZI_ML2023_StatusText as select from DDCDS_CUSTOMER_DOMAIN_VAL
     text as Text,
    
   
-  concat(concat(concat_with_space(value_low, '(', 1), text), ')') as StatusName
+  concat_with_space( text, '', 1 ) as StatusName
 }

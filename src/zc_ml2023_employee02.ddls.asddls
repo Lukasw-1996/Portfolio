@@ -2,7 +2,7 @@
 @AccessControl.authorizationCheck: #NOT_REQUIRED
 @Search.searchable: true
 @Metadata.allowExtensions: true
-define root view entity ZC_ML2023_EMPLOYEE
+define root view entity ZC_ML2023_EMPLOYEE02
 provider contract transactional_query
   as projection on ZR_ML2023_EMPLOYEE
 {
@@ -20,16 +20,10 @@ provider contract transactional_query
       CreatedAt,
       LastChangedBy,
       LastChangedAt,
-      AvailableHoliday,
-      PlannedVacationDays,
-      TotalTakenHolidays,
-      AvailableDaysCriticality,
-      PlannedVacationDaysCriticality,
-      TotalTakenHolidaysCriticality,
       
       /* Associations */
-      _Request : redirected to composition child ZC_ML2023_REQUEST,
-      _Claim : redirected to composition child ZC_ML2023_CLAIM
+      _Request : redirected to composition child ZC_ML2023_REQUEST02
+    
       
       
 }

@@ -26,6 +26,10 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     DATA employees TYPE TABLE OF zml2023_employee. "List<Trave> travels = new ArrayList<>();
     DATA employee TYPE zml2023_employee. "Travel travel;
 
+    DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
+
+
+
     "Daten löschen
     DELETE FROM zml2023_request.
     DELETE FROM zml2023_claim.
@@ -48,9 +52,9 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
 
 
 
-*    hier iwan die createdby etc.
 
-    APPEND request TO requests.
+
+    "APPEND request TO requests.
 
     request-applicant = employee-employee_uuid.
     request-approver = '2'.
@@ -59,6 +63,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-enddate = '20221230'.
     request-comment1 = 'Weihnachtsurlaub'.
     request-status = 'A'.
+    request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
     get TIME STAMP FIELD request-created_at.
@@ -75,6 +80,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-enddate = '20221230'.
     request-comment1 = 'Weihnachtsurlaub (2. Versuch)'.
     request-status = 'G'.
+    request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
     get TIME STAMP FIELD request-created_at.
@@ -92,6 +98,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-startdate = '20230527'.
     request-enddate = '20230614'.
     request-status = 'G'.
+    request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
     get TIME STAMP FIELD request-created_at.
@@ -107,6 +114,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-enddate = '20231231'.
     request-comment1 = 'Winterurlaub'.
     request-status = 'B'.
+    request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
     get TIME STAMP FIELD request-created_at.
@@ -190,6 +198,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-enddate = '20231231'.
     request-comment1 = 'Weihnachtsurlaub'.
     request-status = 'B'.
+    request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
     get TIME STAMP FIELD request-created_at.

@@ -4,6 +4,9 @@ define root view entity ZR_ML2023_EMPLOYEE
   as select from zml2023_employee
   composition [0..*] of ZR_ML2023_REQUEST as _Request
   composition [0..*] of ZR_ML2023_CLAIM   as _Claim
+  association[1..1] to ZI_ML2023_AvailableDays as _AvailableDays on $projection.EmployeeUuid = _AvailableDays.employee_uuid
+  association[1..1] to ZI_ML2023_PLANDAYSTEXT as _PlanDaysText on $projection.EmployeeUuid = _PlanDaysText.applicant
+  association[1..1] to ZI_ML2023_DAYTAKENTEXT as _DaysTakenText on $projection.EmployeeUuid = _DaysTakenText.applicant
 {
       @EndUserText: { label: 'Employee UUID', quickInfo: 'Employee UUID' }
   key employee_uuid   as EmployeeUuid,
@@ -26,6 +29,13 @@ define root view entity ZR_ML2023_EMPLOYEE
       
       /*Associations*/
       _Request,
-      _Claim
+      _Claim,
+      _AvailableDays.AvailableHoliday as AvailableHoliday,
+      _PlanDaysText.PlannedVacationDays as PlannedVacationDays,
+      _DaysTakenText.TotalTAKENHoliday as TotalTakenHolidays,
+      
+      '3' as AvailableDaysCriticality,
+      '2' as PlannedVacationDaysCriticality,
+      '1' as TotalTakenHolidaysCriticality
 
 }

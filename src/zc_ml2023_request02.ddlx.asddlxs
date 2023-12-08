@@ -4,12 +4,9 @@
   typeName: 'Request',
   typeNamePlural: 'Requests',
   title.value: 'RequestUUID',
-  //description.value: '_Employee.Surename'
   description.value: '_Employee.Surename'
-  //description.value: 'TakenDays'
- 
 }
-annotate view ZC_ML2023_REQUEST with
+annotate view ZC_ML2023_REQUEST02 with
 {
   @UI.facet:
     [
@@ -20,35 +17,40 @@ annotate view ZC_ML2023_REQUEST with
     ]
 
   /* Actions*/
-  @UI.lineItem: [{ position: 10, type:#FOR_ACTION,dataAction:'CancelRequest',label:'Cancel Request' }]
-
+@UI.lineItem:[
+    {position:10,type:#FOR_ACTION,dataAction:'approverequest',label:'Approve Request'},
+    {position:20,type:#FOR_ACTION,dataAction:'CancelRequest',label:'Cancel Request'}]
 
 
 
   @UI.fieldGroup: [{ position: 10, qualifier: 'AdminData' }]
   RequestUuid;
+ @UI.lineItem: [{ position: 10, importance:#HIGH }]
   @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
-  @UI.lineItem: [{ position: 10, importance:#LOW }]
+  @EndUserText: { label: 'Applicant', quickInfo: 'Applicant' }
   Applicant;
-  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
   @UI.lineItem: [{ position: 20, importance:#LOW }]
+  @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
+      @EndUserText: { label: 'Approver', quickInfo: 'Approver' }
+      @UI.selectionField: [{ position: 10 }]
   Approver;
   @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
-  @UI.lineItem: [{ position: 30, importance:#HIGH }]
+  @UI.lineItem: [{ position: 30 }]
   Startdate;
+ @UI.lineItem: [{ position: 40 }]
   @UI.fieldGroup: [{ position: 40, qualifier: 'RequestDetails' }]
-  @UI.lineItem: [{ position: 40, importance:#HIGH }]
+          @EndUserText: { label: 'Enddate', quickInfo: 'Enddate' }
   Enddate;
-  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
   @UI.lineItem: [{ position: 50 }]
+  @UI.fieldGroup: [{ position: 50, qualifier: 'RequestDetails' }]
+              @EndUserText: { label: 'Comment', quickInfo: 'Comment' }
   Comment1;
+  
+    @UI.lineItem: [{ position: 60, importance:#HIGH, criticality: 'StatusCriticality', criticalityRepresentation: #WITH_ICON}]
   @UI.fieldGroup: [{ position: 60, qualifier: 'RequestDetails' }]
-  @UI.lineItem: [{ position: 60, criticality: 'StatusCriticality', criticalityRepresentation: #WITH_ICON, importance:#HIGH}]
+    @EndUserText: { label: 'Status', quickInfo: 'Status' }
+    @UI.selectionField: [{ position: 20 }]
   Status;
-   @UI.fieldGroup: [{ position: 70, qualifier: 'RequestDetails' }]
-  @UI.lineItem: [{ position: 70, importance:#HIGH}]
-  @EndUserText: { label: 'Required days', quickInfo: 'Required days' }
-  Holidays;
   @UI.fieldGroup: [{ position: 20, qualifier: 'AdminData' }]
   CreatedBy;
 
@@ -60,10 +62,7 @@ annotate view ZC_ML2023_REQUEST with
 
   @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
   LastChangedAt;
-  /* Associations */
-  // _Employee;
-
-  /* Transient Data */
+  
 
 
 

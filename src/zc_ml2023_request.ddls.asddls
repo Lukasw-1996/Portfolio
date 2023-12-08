@@ -11,6 +11,7 @@ define view entity ZC_ML2023_REQUEST
  Approver,
  Startdate,
  Enddate,
+ Holidays,
  Comment1,
  @Consumption.valueHelpDefinition: [{ entity: { name: 'ZI_ML2023_StatusVH', element: 'Status' } }]
  Status,
@@ -24,6 +25,8 @@ StatusName,
 /* Transient Data*/
     ApproverName,
     ApplicantName,
+    //RequestedDays,
+    //TakenDays,
  
  /* Associations */
  _Employee : redirected to parent ZC_ML2023_EMPLOYEE 

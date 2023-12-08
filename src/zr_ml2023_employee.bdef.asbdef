@@ -11,7 +11,7 @@ authorization master ( instance )
   update;
   delete;
   association _Request { create; }
-  association _Claim { create; }
+ association _Claim { create; }
 
 
 
@@ -44,6 +44,16 @@ authorization dependent by _Employee
 
   action CancelRequest result [1] $self;
 
+  action approverequest result [1] $self;
+
+  validation ValidateDates on save { create; }
+
+  determination DetermineStatus on modify { create; }
+
+  determination DetermineHoliday on modify { create; }
+
+  determination determineStatusP on modify { field Comment1; }
+
   field ( readonly, numbering : managed ) RequestUuid;
   field ( readonly ) Applicant;
   field ( mandatory : create ) Approver;
@@ -57,6 +67,7 @@ authorization dependent by _Employee
   field ( readonly ) CreatedBy;
   field ( readonly ) LastChangedBy;
   field ( readonly ) LastChangedAt;
+  field ( readonly ) Holidays;
   association _Employee;
 
 

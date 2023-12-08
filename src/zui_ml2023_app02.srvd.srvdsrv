@@ -1,0 +1,5 @@
+@EndUserText.label: 'App 2'
+define service ZUI_ML2023_APP02 {
+  expose ZC_ML2023_REQUEST02;
+  expose ZC_ML2023_EMPLOYEE02;
+}

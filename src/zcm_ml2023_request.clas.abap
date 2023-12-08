@@ -30,7 +30,40 @@ CLASS zcm_ml2023_request DEFINITION
         attr4 type scx_attrname value '',
       end of REQUEST_ALREADY_CANCELLED.
 
-     DATA comment1 TYPE zml2023_comment.
+
+
+     CONSTANTS:
+      BEGIN OF invalid_dates,
+        msgid TYPE symsgid      VALUE 'ZML2023_REQUEST',
+        msgno TYPE symsgno      VALUE '003',
+        attr1 TYPE scx_attrname VALUE '',
+        attr2 TYPE scx_attrname VALUE '',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF invalid_dates.
+
+       CONSTANTS:
+      BEGIN OF request_approved_successfully,
+        msgid TYPE symsgid      VALUE 'ZML2023_REQUEST',
+        msgno TYPE symsgno      VALUE '004',
+        attr1 TYPE scx_attrname VALUE '',
+        attr2 TYPE scx_attrname VALUE '',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF request_approved_successfully.
+
+      CONSTANTS:
+      BEGIN OF request_already_approved,
+        msgid TYPE symsgid      VALUE 'ZML2023_REQUEST',
+        msgno TYPE symsgno      VALUE '005',
+        attr1 TYPE scx_attrname VALUE '',
+        attr2 TYPE scx_attrname VALUE '',
+        attr3 TYPE scx_attrname VALUE '',
+        attr4 TYPE scx_attrname VALUE '',
+      END OF request_already_approved.
+
+      "Attributes
+      DATA comment1 TYPE zml2023_comment.
 
     METHODS constructor
       IMPORTING

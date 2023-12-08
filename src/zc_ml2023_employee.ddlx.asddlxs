@@ -50,4 +50,27 @@ annotate entity ZC_ML2023_EMPLOYEE with
     
     @UI.fieldGroup: [{ position: 50, qualifier: 'AdminData' }]
     LastChangedAt;
+    
+    @EndUserText: { label: 'Available Vacation Days', quickInfo: 'Availavle Vacation Days'}
+  @UI.lineItem: [{ position: 60, criticality: 'AvailableDaysCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.dataPoint: { description: 'Available Vacation Days', title: 'Available Vacation Days', targetValueElement: 'AvailableHoliday', criticality: 'AvailableDaysCriticality' }
+  AvailableHoliday;
+  @EndUserText: { label: 'Consumed Vacation Days', quickInfo: 'Consumed Vacation Days'}
+  @UI.lineItem: [{ position: 70, criticality: 'totaltakenholidayscriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.dataPoint: { description: 'Consumed Vacation Days', title: 'Consumed Vacation Days', targetValueElement: 'TotalTakenHolidays', criticality: 'totaltakenholidayscriticality'}
+  TotalTakenHolidays;
+  @EndUserText: { label: 'Planned Vacation Days', quickInfo: 'Planned Vacation Days'}
+  @UI.lineItem: [{ position: 80, criticality: 'PlannedVacationDaysCriticality', criticalityRepresentation: #WITHOUT_ICON }]
+  @UI.dataPoint: { description: 'Available Vacation Days', title: 'Planned Vacation Days', targetValueElement: 'PlannedVacationDays', criticality: 'plannedvacationdayscriticality'}
+  PlannedVacationDays;
+
+  @UI.hidden: true
+  AvailableDaysCriticality;
+
+  @UI.hidden: true
+  TotalTakenHolidaysCriticality;
+
+  @UI.hidden: true
+  PlannedVacationDaysCriticality;
+    
 }

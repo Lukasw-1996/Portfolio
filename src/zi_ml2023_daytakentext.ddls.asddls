@@ -7,6 +7,6 @@ define view entity ZI_ML2023_DAYTAKENTEXT
   key applicant as applicant,
     sum(holidays) as TotalTAKENHoliday
 }
-where status='A'
+where status='D'
 and enddate < $session.user_date
 group by applicant;

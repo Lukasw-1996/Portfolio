@@ -62,7 +62,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-startdate = '20221227'.
     request-enddate = '20221230'.
     request-comment1 = 'Weihnachtsurlaub'.
-    request-status = 'A'.
+    request-status = 'D'.
     request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
@@ -79,7 +79,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-startdate = '20221228'.
     request-enddate = '20221230'.
     request-comment1 = 'Weihnachtsurlaub (2. Versuch)'.
-    request-status = 'G'.
+    request-status = 'A'.
     request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
@@ -97,7 +97,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-comment1 = ' '.
     request-startdate = '20230527'.
     request-enddate = '20230614'.
-    request-status = 'G'.
+    request-status = 'A'.
     request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
@@ -113,7 +113,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-startdate = '20231220'.
     request-enddate = '20231231'.
     request-comment1 = 'Winterurlaub'.
-    request-status = 'B'.
+    request-status = 'R'.
     request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.
@@ -197,7 +197,7 @@ CLASS zcl_ml2023_vacation_generator IMPLEMENTATION.
     request-startdate = '20231227'.
     request-enddate = '20231231'.
     request-comment1 = 'Weihnachtsurlaub'.
-    request-status = 'B'.
+    request-status = 'R'.
     request-holidays = calendar->calc_workingdays_between_dates( iv_start = request-startdate iv_end = request-enddate ).
     request-request_uuid = cl_system_uuid=>create_uuid_x16_static( ).
     request-created_by = 'GENERATOR'.

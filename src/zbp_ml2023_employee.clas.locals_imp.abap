@@ -47,7 +47,7 @@ CLASS lhc_request IMPLEMENTATION.
     LOOP AT requests REFERENCE INTO DATA(request). "for (Travel travel : travels) {...}
 
       "Validate Status and Create Error Message
-      IF request->Status = 'A'.
+      IF request->Status = 'D'.
         message = NEW zcm_ml2023_request(
          textid      = zcm_ml2023_request=>request_already_cancelled
          severity    = if_abap_behv_message=>severity-error
@@ -60,7 +60,7 @@ CLASS lhc_request IMPLEMENTATION.
       ENDIF.
 
       "Set Status on Cancelled and Create Success Message
-      request->Status = 'A'.
+      request->Status = 'D'.
       message = NEW zcm_ml2023_request(
         textid      = zcm_ml2023_request=>request_cancelled_successfully
         severity    = if_abap_behv_message=>severity-success
@@ -141,7 +141,7 @@ CLASS lhc_request IMPLEMENTATION.
            UPDATE FIELDS ( Status )
            WITH VALUE #( FOR t IN requests
                          ( %tky   = t-%tky
-                           Status = 'B' ) ).
+                           Status = 'R' ) ).
   ENDMETHOD.
 
   METHOD determineStatusP.
@@ -154,9 +154,9 @@ CLASS lhc_request IMPLEMENTATION.
     " Modify Travels
     MODIFY ENTITY IN LOCAL MODE zr_ml2023_request
            UPDATE FIELDS ( Status )
-           WITH VALUE #( FOR t IN requests WHERE ( Status = 'G' )
+           WITH VALUE #( FOR t IN requests WHERE ( Status = 'A' )
                          ( %tky   = t-%tky
-                           Status = 'B' ) ).
+                           Status = 'R' ) ).
   ENDMETHOD.
 
 
@@ -197,7 +197,7 @@ endtry.
     LOOP AT requests REFERENCE INTO DATA(request). "for (Travel travel : travels) {...}
 
       "Validate Status and Create Error Message
-      IF request->Status = 'G'.
+      IF request->Status = 'A'.
         message = NEW zcm_ml2023_request(
          textid      = zcm_ml2023_request=>request_already_approved
          severity    = if_abap_behv_message=>severity-error
@@ -210,7 +210,7 @@ endtry.
       ENDIF.
 
       "Set Status on Cancelled and Create Success Message
-      request->Status = 'G'.
+      request->Status = 'A'.
       message = NEW zcm_ml2023_request(
         textid      = zcm_ml2023_request=>request_approved_successfully
         severity    = if_abap_behv_message=>severity-success

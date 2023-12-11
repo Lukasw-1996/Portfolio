@@ -36,9 +36,9 @@ association[1..1] to ZI_ML2023_ApplicantText as _ApplicantText on $projection.Ap
    //_PlanDaysText.TotalRequestedHoliday as RequestedDays,
    //_DaysTakenText.TotalTakenHoliday as TakenDays,
     
-    case status when 'B' then 2
-    when 'A' then 1
-    when 'G' then 3
+    case status when 'R' then 2
+    when 'D' then 1
+    when 'A' then 3
     else 0
     end as StatusCriticality,
     

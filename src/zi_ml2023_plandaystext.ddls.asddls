@@ -7,6 +7,6 @@ define view entity ZI_ML2023_PLANDAYSTEXT
   key applicant as applicant,
     sum(holidays) as PlannedVacationDays
 }
-where status <> 'A'
+where status <> 'D'
 and enddate >= $session.system_date
 group by applicant;

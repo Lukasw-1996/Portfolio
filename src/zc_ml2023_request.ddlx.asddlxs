@@ -20,7 +20,7 @@ annotate view ZC_ML2023_REQUEST with
     ]
 
   /* Actions*/
-  @UI.lineItem: [{ position: 10, type:#FOR_ACTION,dataAction:'CancelRequest',label:'Cancel Request' }]
+  @UI.lineItem: [{ position: 10, type:#FOR_ACTION,dataAction:'CancelRequest',label:'Decline Request' }]
 
 
 

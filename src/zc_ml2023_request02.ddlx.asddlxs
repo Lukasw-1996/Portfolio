@@ -19,7 +19,7 @@ annotate view ZC_ML2023_REQUEST02 with
   /* Actions*/
 @UI.lineItem:[
     {position:10,type:#FOR_ACTION,dataAction:'approverequest',label:'Approve Request'},
-    {position:20,type:#FOR_ACTION,dataAction:'CancelRequest',label:'Cancel Request'}]
+    {position:20,type:#FOR_ACTION,dataAction:'CancelRequest',label:'Decline Request'}]
 
 
 
@@ -28,11 +28,11 @@ annotate view ZC_ML2023_REQUEST02 with
  @UI.lineItem: [{ position: 10, importance:#HIGH }]
   @UI.fieldGroup: [{ position: 10, qualifier: 'RequestDetails' }]
   @EndUserText: { label: 'Applicant', quickInfo: 'Applicant' }
+   @UI.selectionField: [{ position: 10 }]
   Applicant;
   @UI.lineItem: [{ position: 20, importance:#LOW }]
   @UI.fieldGroup: [{ position: 20, qualifier: 'RequestDetails' }]
       @EndUserText: { label: 'Approver', quickInfo: 'Approver' }
-      @UI.selectionField: [{ position: 10 }]
   Approver;
   @UI.fieldGroup: [{ position: 30, qualifier: 'RequestDetails' }]
   @UI.lineItem: [{ position: 30 }]

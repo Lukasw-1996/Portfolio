@@ -12,13 +12,13 @@
      <SPRSL>E</SPRSL>
      <ARBGB>ZML2023_REQUEST</ARBGB>
      <MSGNR>001</MSGNR>
-     <TEXT>The request &amp;1 was cancelled successfully</TEXT>
+     <TEXT>The request &amp;1 was declined successfully</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>
      <ARBGB>ZML2023_REQUEST</ARBGB>
      <MSGNR>002</MSGNR>
-     <TEXT>The request &amp;1 is already cancelled</TEXT>
+     <TEXT>The request &amp;1 is already declined</TEXT>
     </T100>
     <T100>
      <SPRSL>E</SPRSL>

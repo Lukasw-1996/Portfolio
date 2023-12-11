@@ -47,7 +47,7 @@ CLASS lhc_request IMPLEMENTATION.
     LOOP AT requests REFERENCE INTO DATA(request). "for (Travel travel : travels) {...}
 
       "Validate Status and Create Error Message
-      IF request->Status = 'X'.
+      IF request->Status = 'A'.
         message = NEW zcm_ml2023_request(
          textid      = zcm_ml2023_request=>request_already_cancelled
          severity    = if_abap_behv_message=>severity-error
@@ -60,7 +60,7 @@ CLASS lhc_request IMPLEMENTATION.
       ENDIF.
 
       "Set Status on Cancelled and Create Success Message
-      request->Status = 'X'.
+      request->Status = 'A'.
       message = NEW zcm_ml2023_request(
         textid      = zcm_ml2023_request=>request_cancelled_successfully
         severity    = if_abap_behv_message=>severity-success
@@ -161,7 +161,7 @@ CLASS lhc_request IMPLEMENTATION.
 
 
   METHOD determineHoliday.
-
+Try.
     "Define Calendar
     DATA(calendar) = cl_fhc_calendar_runtime=>create_factorycalendar_runtime( 'SAP_DE_BW' ).
     " Read Travels
@@ -176,7 +176,9 @@ CLASS lhc_request IMPLEMENTATION.
            WITH VALUE #( FOR t IN requests
                          ( %tky   = t-%tky
                            Holidays = calendar->calc_workingdays_between_dates( iv_start = t-startdate iv_end = t-enddate ) ) ).
+CATCH cx_root INTO DATA(error).
 
+endtry.
   ENDMETHOD.
 
   METHOD approverequest.
